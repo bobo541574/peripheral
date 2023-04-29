@@ -2,7 +2,7 @@
 
 namespace Bobo\Peripheral\Providers;
 
-use Bobo\Peripheral\Permission\Providers\PermissionServiceProvider;
+use Bobo\Peripheral\Permission\PermissionServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
 class PeripheralServiceProvider extends ServiceProvider {
