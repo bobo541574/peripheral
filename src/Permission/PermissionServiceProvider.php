@@ -24,7 +24,7 @@ class PermissionServiceProvider extends ServiceProvider {
             $this->publishes([$stub => $target], 'migrations');
         }
 
-        if (class_exists('CreatePermissionsTable')) {
+        if (!class_exists('CreatePermissionsTable')) {
             $stub = __DIR__ . '/database/migrations/create_permissions_table.php.stub';
             
             $target = $this->app->databasePath().'/migrations/'.$timestamp.'_create_permissions_table.php';
