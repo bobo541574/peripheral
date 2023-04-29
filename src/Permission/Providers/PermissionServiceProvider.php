@@ -1,5 +1,7 @@
 <?php
 
+namespace Bobo\Peripheral\Permission\Providers;
+
 use Illuminate\Support\ServiceProvider;
 
 class PermissionServiceProvider extends ServiceProvider {
