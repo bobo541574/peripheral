@@ -21,7 +21,7 @@ class PermissionServiceProvider extends ServiceProvider {
             
             $target = $this->app->databasePath().'/migrations/'.$timestamp.'_create_roles_table.php';
             
-            return $this->publishes([$stub => $target], 'migrations');
+            $this->publishes([$stub => $target], 'migrations');
         }
 
         if (class_exists('CreatePermissionsTable')) {
@@ -29,7 +29,7 @@ class PermissionServiceProvider extends ServiceProvider {
             
             $target = $this->app->databasePath().'/migrations/'.$timestamp.'_create_permissions_table.php';
             
-            return $this->publishes([$stub => $target], 'migrations');
+            $this->publishes([$stub => $target], 'migrations');
         }
 
         return;
