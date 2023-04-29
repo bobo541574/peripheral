@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Veelasky\LaravelHashId\Eloquent\HashableId;
 
-class Permissions extends Model {
+class Permission extends Model {
     use HashableId, SoftDeletes;
 
     protected $fillable = [
