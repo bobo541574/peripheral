@@ -8,7 +8,17 @@ class PermissionServiceProvider extends ServiceProvider {
     
     public function boot()
     {
+        $this->publishConfigs();
+
         $this->publishMigrations();
+    }
+
+    public function publishConfigs()
+    {
+        $this->publishes([
+            __DIR__ . '/config/permissions.php' => config_path('permissions.php'),
+            __DIR__ . '/config/roles.php' => config_path('roles.php'),
+        ], 'config');
     }
 
     public function publishMigrations()

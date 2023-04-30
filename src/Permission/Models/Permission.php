@@ -14,4 +14,8 @@ class Permission extends Model {
         'slug',
         'group',
     ];
+
+    protected $casts = [
+        'name' => 'json',
+    ];
 }

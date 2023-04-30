@@ -13,11 +13,11 @@ class Role extends Model {
         'name',
         'slug',
         'level',
-        'group',
         'permissions',
     ];
 
     protected $casts = [
+        'name' => 'json',
         'permissions' => 'json'
     ];
 }
