@@ -1,7 +1,8 @@
 <?php
 
-namespace Bobo\Peripheral\Permission\Traits;
+namespace Bobo\Peripheral\Permission\Trait;
 
+use Bobo\Peripheral\Permission\Models\Role;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 trait HasRole {
