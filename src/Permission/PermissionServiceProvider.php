@@ -3,9 +3,20 @@
 namespace Bobo\Peripheral\Permission;
 
 use Illuminate\Support\ServiceProvider;
+use Laravel\Prompts\Output\ConsoleOutput;
+use Illuminate\Console\Concerns\InteractsWithIO;
 
-class PermissionServiceProvider extends ServiceProvider {
-    
+class PermissionServiceProvider extends ServiceProvider
+{
+    use InteractsWithIO;
+
+    public function __construct()
+    {
+        parent::__construct(app());
+
+        $this->output = new ConsoleOutput();
+    }
+
     public function boot()
     {
         $this->publishConfigs();
@@ -23,23 +34,28 @@ class PermissionServiceProvider extends ServiceProvider {
 
     public function publishMigrations()
     {
+
         $timestamp = date('Y_m_d_His', time());
 
-        
-        if (!class_exists('CreateRolesTable')) {
-            $stub = __DIR__ . '/database/migrations/create_roles_table.php.stub';
-            
-            $target = $this->app->databasePath().'/migrations/'.$timestamp.'_create_roles_table.php';
-            
-            $this->publishes([$stub => $target], 'migrations');
-        }
+        $filesystem = $this->app->make(Filesystem::class);
 
-        if (!class_exists('CreatePermissionsTable')) {
-            $stub = __DIR__ . '/database/migrations/create_permissions_table.php.stub';
-            
-            $target = $this->app->databasePath().'/migrations/'.$timestamp.'_create_permissions_table.php';
-            
-            $this->publishes([$stub => $target], 'migrations');
+        $files = [
+            'create_roles_table.php',
+            'create_permissions_table.php'
+        ];
+
+        foreach ($files as $file) {
+            $stub = __DIR__ . DIRECTORY_SEPARATOR . 'database/migrations' . DIRECTORY_SEPARATOR . $file;
+
+            $target = $this->app->databasePath() . DIRECTORY_SEPARATOR . 'migrations' . DIRECTORY_SEPARATOR;
+
+            $record = collect($target)
+                ->flatMap(fn ($path) => $filesystem->glob($path . "*_" . $file));
+
+            if ($record->count() == 0) {
+                $this->publishes([$stub => $target . $timestamp . '_' . $file], 'migrations');
+            }
+
         }
 
         return;
