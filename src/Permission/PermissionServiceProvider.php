@@ -46,7 +46,7 @@ class PermissionServiceProvider extends ServiceProvider
         ];
 
         foreach ($files as $file) {
-            $stub = __DIR__ . DIRECTORY_SEPARATOR . 'database/migrations' . DIRECTORY_SEPARATOR . $file;
+            $stub = __DIR__ . DIRECTORY_SEPARATOR . 'database/migrations' . DIRECTORY_SEPARATOR . $file . '.stub';
 
             $target = $this->app->databasePath() . DIRECTORY_SEPARATOR . 'migrations' . DIRECTORY_SEPARATOR;
 
