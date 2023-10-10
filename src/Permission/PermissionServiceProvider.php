@@ -2,6 +2,7 @@
 
 namespace Bobo\Peripheral\Permission;
 
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Prompts\Output\ConsoleOutput;
 use Illuminate\Console\Concerns\InteractsWithIO;
