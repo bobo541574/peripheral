@@ -22,6 +22,7 @@
         "php": "^7.2.5|^8.0",
         "illuminate/database": "^6.0|^7.0|^8.0|^9.0|^10.0",
         "illuminate/support": "^6.0|^7.0|^8.0|^9.0|^10.0",
+        "illuminate/filesystem": "^6.2",
         "veelasky/laravel-hashid": "^3.1"
     },
     "require-dev": {
