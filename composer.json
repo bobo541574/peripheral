@@ -10,7 +10,10 @@
     "autoload": {
         "psr-4": {
             "Bobo\\Peripheral\\": "src/"
-        }
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "authors": [
         {
@@ -26,5 +29,12 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0|^9.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bobo\\Peripheral\\Permission\\PermissionServiceProvider"
+            ]
+        }
     }
 }

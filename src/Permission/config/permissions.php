@@ -2,8 +2,16 @@
 
 return [
     [
+        'name' => 'Permission',
+        'list' => [
+            [
+                'en' => 'Permission Update',
+                'mm' => 'ဝန်ထမ်း ပြူပြင်ခြင်း',
+            ],
+        ],
+    ],
+    [
         'name' => 'Staff',
-        'group' => 1,
         'list' => [
             [
                 'en' => 'Staff Create',

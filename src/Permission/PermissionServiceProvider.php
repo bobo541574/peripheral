@@ -6,6 +6,10 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Prompts\Output\ConsoleOutput;
 use Illuminate\Console\Concerns\InteractsWithIO;
+use Bobo\Peripheral\Permission\Commands\CreateRole;
+use Bobo\Peripheral\Permission\Commands\InstallRole;
+use Bobo\Peripheral\Permission\Commands\CreatePermission;
+use Bobo\Peripheral\Permission\Commands\InstallPermission;
 
 class PermissionServiceProvider extends ServiceProvider
 {
@@ -23,6 +27,8 @@ class PermissionServiceProvider extends ServiceProvider
         $this->publishConfigs();
 
         $this->publishMigrations();
+
+        $this->publishCommands();
     }
 
     public function publishConfigs()
@@ -60,5 +66,16 @@ class PermissionServiceProvider extends ServiceProvider
         }
 
         return;
+    }
+
+    public function publishCommands()
+    {
+        $this->commands([
+            InstallPermission::class,
+            InstallRole::class,
+
+            CreateRole::class,
+            CreatePermission::class,
+        ]);
     }
 }
